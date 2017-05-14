@@ -84,14 +84,13 @@ with open('sightings.csv') as f:
             # Ensure date is >= EARLIEST_DATE
             if date < EARLIEST_DATE:
                 logs['invalid_date'] += 1
-                continue;
+                continue
 
             ## LIKELY VALID ##
-            sightings.append(line)
+            sightings.append([date, line[1], line[2], line[5]])
             logs['valid'] += 1
 
         except:
-            print(sys.exc_info()[0])
             logs['error'] += 1
             continue
 
